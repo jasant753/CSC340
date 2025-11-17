@@ -1,0 +1,259 @@
+Welcome to EventTicket340!
+Username: Email: Password: Short bio: Profile picture path: 
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+=== Organizer Profile ===
+Username: AlexArtman
+Email: a.alex@sfsu.edu
+Bio: Fine arts student focusing on mixed media at San Francisco State University
+Profile Picture (path): C:\Users\aalex\Pictures\selfie.jpg
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+Enter new password: Password updated successfully.
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+=== Create Event ===
+[1] Virtual
+[2] Venue
+Enter 1 or 2: Name: Description: Rating (integer): Stream link: Audience: 
+Created:
+
+=== Virtual Event ===
+Name: Virtual Critique Night
+Description: Share works-in-progress for live critique on Zoom
+Rating: 5
+Sold Tickets: 0
+Stream link: https://www.zoom.com/my/artcrit
+Audience: Art Students
+
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+=== Create Event ===
+[1] Virtual
+[2] Venue
+Enter 1 or 2: Name: Description: Rating (integer): Venue: Date/Time: Capacity (integer): 
+Created:
+
+=== Venue Event ===
+Name: Campus Gallery Pop-Up
+Description: Student-run exhibition with live screen printing demos
+Rating: 5
+Sold Tickets: 0
+Venue: Fine Arts Gallery
+Date/Time: November 12, 2025 18:30
+Capacity: 40
+
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+=== All Events ===
+[1]
+
+=== Virtual Event ===
+Name: Virtual Critique Night
+Description: Share works-in-progress for live critique on Zoom
+Rating: 5
+Sold Tickets: 0
+Stream link: https://www.zoom.com/my/artcrit
+Audience: Art Students
+
+-------------------------
+[2]
+
+=== Venue Event ===
+Name: Campus Gallery Pop-Up
+Description: Student-run exhibition with live screen printing demos
+Rating: 5
+Sold Tickets: 0
+Venue: Fine Arts Gallery
+Date/Time: November 12, 2025 18:30
+Capacity: 40
+
+-------------------------
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+Enter K: 
+--- Event [2] ---
+
+=== Venue Event ===
+Name: Campus Gallery Pop-Up
+Description: Student-run exhibition with live screen printing demos
+Rating: 5
+Sold Tickets: 0
+Venue: Fine Arts Gallery
+Date/Time: November 12, 2025 18:30
+Capacity: 40
+
+-------------------------
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+Enter Event ID: New name: New description: Event updated.
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+=== All Events ===
+[1]
+
+=== Virtual Event ===
+Name: Virtual Critique Night
+Description: Share works-in-progress for live critique on Zoom
+Rating: 5
+Sold Tickets: 0
+Stream link: https://www.zoom.com/my/artcrit
+Audience: Art Students
+
+-------------------------
+[2]
+
+=== Venue Event ===
+Name: Campus Gallery Pop-Up (Featuring Student Prints)
+Description: Expanded show with additional printmaking pieces and zine swap
+Rating: 5
+Sold Tickets: 0
+Venue: Fine Arts Gallery
+Date/Time: November 12, 2025 18:30
+Capacity: 40
+
+-------------------------
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+Enter event ID: Quantity of tickets to sell: Sold 5 virtual ticket(s). Access code: CODE-Q8EIN
+Sale completed
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+Enter event ID: Quantity of tickets to sell: Sold 20 ticket(s). Remaining capacity: 20
+Sale completed
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+
+Enter K: Deleting event: Virtual Critique Night
+Event deleted successfully.
+
+ Hi, AlexArtman, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+Logging you out.

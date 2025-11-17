@@ -1,0 +1,227 @@
+
+Welcome to EventTicket340:
+Username: Email: Password: Short bio: Profile picture path: 
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Organizer Profile ===
+Username: JohnDoe
+Email: johndoe@sfsu.edu
+Bio: Aspiring game dev at San Francisco State University
+Profile Picture (path): C:\Users\jdoe\Pictures\selfie.jpg
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: Enter new password: Password updated successfully.
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Create Event ===
+
+Choose type: 
+[1] Virtual 
+[2] Venue
+Enter 1 or 2: Name: Description: Rating: Stream link: Audience: Virtual Event created.
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Create Event ===
+
+Choose type: 
+[1] Virtual 
+[2] Venue
+Enter 1 or 2: Name: Description: Rating: Venue: Date/Time: Capacity: Venue Event created.
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== All Events ===
+[1] 
+=== Virtual Event ===
+Name: Virtual Indie Game Presentation
+Description: Share current progress on indie games with fellow students over Zoom
+Rating: 5
+Sold Tickets: 0
+Stream link: https://www.zoom.com
+Audience: 30
+-------------------------
+[2] 
+=== Venue Event ===
+Name: Indie Dev Meet & Greet
+Description: Meet up and share ideas with fellow indie dev students on campus
+Rating: 5
+Sold Tickets: 0
+Venue: Student Center
+Date/Time: October 8, 2025 13:00
+Capacity: 25
+-------------------------
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Display K-th Event ===
+Enter K: 
+--- Event [2] ---
+
+=== Venue Event ===
+Name: Indie Dev Meet & Greet
+Description: Meet up and share ideas with fellow indie dev students on campus
+Rating: 5
+Sold Tickets: 0
+Venue: Student Center
+Date/Time: October 8, 2025 13:00
+Capacity: 25
+-------------------------
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Modify Event ===
+Enter Event ID: New name: New description: Event updated.
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== All Events ===
+[1] 
+=== Virtual Event ===
+Name: Virtual Indie Game Presentation
+Description: Share current progress on indie games with fellow students over Zoom
+Rating: 5
+Sold Tickets: 0
+Stream link: https://www.zoom.com
+Audience: 30
+-------------------------
+[2] 
+=== Venue Event ===
+Name: Indie Dev Meet & Greet (Newcomers Welcome!)
+Description: Meet up and share ideas with fellow indie dev students on campus. If you're interested in starting, come by!
+Rating: 5
+Sold Tickets: 0
+Venue: Student Center
+Date/Time: October 8, 2025 13:00
+Capacity: 25
+-------------------------
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Sell Tickets ===
+Enter event ID: Quantity of tickets to sell: Sold 5 virtual ticket(s). Access code: CODE-FBL9H
+Sale completed
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Sell Tickets ===
+Enter event ID: Quantity of tickets to sell: Sold 20 ticket(s). Remaining capacity: 5
+Sale completed
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: 
+=== Delete Event ===
+Enter K: Deleting event: Virtual Indie Game Presentation
+Event deleted successfully.
+
+ Hi, JohnDoe, what would you like to do:
+1. Display Profile
+2. Modify Password
+3. Create Event
+4. Display All Events
+5. Display Kth Event
+6. Modify Event
+7. Sell Tickets
+8. Delete Event
+0. Logout
+Choice: Logging you out.
