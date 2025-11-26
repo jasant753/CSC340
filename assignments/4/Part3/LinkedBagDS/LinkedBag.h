@@ -30,8 +30,8 @@ class LinkedBag : public BagInterface<ItemType>{
 		Node<ItemType>* partition(
 			Node<ItemType>* head,
 			Node<ItemType>* end,
-			Node<ItemType>** newHead,
-			Node<ItemType>** newEnd);
+			Node<ItemType>*& newHead,
+			Node<ItemType>*& newEnd);
 		Node<ItemType>* getTail(Node<ItemType>* head);
 			
 

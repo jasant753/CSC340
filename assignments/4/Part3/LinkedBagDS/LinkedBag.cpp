@@ -129,49 +129,54 @@ template<class ItemType>
 Node<ItemType>* LinkedBag<ItemType>::partition(
 	Node<ItemType>* head,
 	Node<ItemType>* end,
-	Node<ItemType>** newHead, 
-	Node<ItemType>** newEnd)
+	Node<ItemType>*& newHead, 
+	Node<ItemType>*& newEnd)
 {
-	Node<ItemType>* pivot = end;
+	Node<ItemType>* pivot = end; // pivot should always be last node
 	Node<ItemType>* prev = nullptr;
 	Node<ItemType>* curr = head;
 	Node<ItemType>* tail = pivot;
 
-	*newHead = nullptr;
+	newHead = nullptr; // becomes the head of left partition
 
-	// current node stays at the front as long as it's less than the pivot
 	while (curr != pivot) {
-		if (curr->getItem() < pivot->getItem()) {
-			if (*newHead == nullptr)
-				*newHead = curr;
+		if (curr->getItem() < pivot->getItem()) { // current node that is (less than pivot) belongs to left partition
+			// first left node becomes newHead
+			if (newHead == nullptr)
+				newHead = curr;
 
 			prev = curr;
 			curr = curr->getNext();
 		}
-		// nodes that are less than or equal to the pivot are moved to the tail
+
+		// current node belongs to the right partition (greater or equal to pivot)
 		else {
-			if (prev != nullptr)
-				prev->setNext(curr->getNext());
-
 			Node<ItemType>* temp = curr->getNext();
-			curr->setNext(nullptr);
 
+			if (prev == nullptr) {
+				head = temp;
+			}
+			else {
+				prev->setNext(temp); // skips curr on the left
+			}
+
+			// move curr to the end of right partition
+			curr->setNext(nullptr);
 			tail->setNext(curr);
 			tail = curr;
 
 			curr = temp;
 		}
 	}
-	
-	// case where every node is greater than or equal to the pivot, the pivot becomes the head 
-	if (*newHead == nullptr)
-		*newHead = pivot;
 
-	*newEnd = tail;
+	// pivt becomes the head of partition if newHead is never assigned
+	if (newHead == nullptr)
+		newHead = pivot;
 
+	newEnd = tail;
 	return pivot;
 }
-
+	
 template<class ItemType>
 Node<ItemType>* LinkedBag<ItemType>::quickSortRec(
 	Node<ItemType>* head,
@@ -180,10 +185,10 @@ Node<ItemType>* LinkedBag<ItemType>::quickSortRec(
 	if (!head || head == end)
 		return head;
 
-	Node<ItemType>* newHead = nullptr,
-		*newEnd = nullptr;
+	Node<ItemType>* newHead = nullptr;
+	Node<ItemType>* newEnd = nullptr;
 
-	Node<ItemType>* pivot = partition(head, end, &newHead, &newEnd); // get pivot after partitioning list
+	Node<ItemType>* pivot = partition(head, end, newHead, newEnd); // get pivot after partitioning list
 
 	if (newHead != pivot) {
 		Node<ItemType>* temp = newHead;
