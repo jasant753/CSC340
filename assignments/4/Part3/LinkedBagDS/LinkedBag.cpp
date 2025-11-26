@@ -28,15 +28,181 @@ void LinkedBag<ItemType>::sort(int method){
 //TO DO: implement merge sort and change its prototype if you need to.
 template<class ItemType>
 void LinkedBag<ItemType>::mergeSort(){
+	headPtr = mergeSortHelper(headPtr);
+}
 
+template<class ItemType>
+void LinkedBag<ItemType>::splitList(
+		Node<ItemType>* start,
+		Node<ItemType>*& left,
+		Node<ItemType>*& right) {
+	if (start == nullptr || start->getNext() == nullptr) {
+		left = start;
+		right = nullptr;
+		return;
+	}
 
+	Node<ItemType>* midFinder = start;
+	Node<ItemType>* endFinder = start->getNext();
+
+	// endFinder will reach the end first, then midFinder hits midpoint
+	while (endFinder != nullptr) {
+		endFinder = endFinder->getNext();
+		if (endFinder != nullptr) {
+			midFinder = midFinder->getNext();
+			endFinder = endFinder->getNext();
+		}
+	}
+
+	left = start;
+	right = midFinder->getNext(); // effectively the start of the second half
+	midFinder->setNext(nullptr);
+}
+
+template<class ItemType>
+Node<ItemType>* LinkedBag<ItemType>::mergeLists(
+	Node<ItemType>* left,
+	Node<ItemType>* right) {
+	if (left == nullptr)
+		return right;
+	if (right == nullptr)
+		return left;
+
+	Node<ItemType>* result = nullptr;
+
+	// smaller value between left and right will become the next node in sorted list
+	if (left->getItem() <= right->getItem()) {
+		result = left;
+
+		result->setNext(mergeLists(left->getNext(), right)); // merges the rest of left->getNext() with all of right
+	}
+	else {
+		result = right;
+
+		result->setNext(mergeLists(left, right->getNext())); // merges all of left with the rest of right->getNext()
+	}
+
+	// should return smallest node with correct pointer to next value
+	return result;
+}
+
+template<class ItemType>
+Node<ItemType>* LinkedBag<ItemType>::mergeSortHelper(Node<ItemType>* start) {
+	if (start == nullptr || start->getNext() == nullptr) { // already sorted if the list is empty or contains only one node
+		return start;
+	}
+
+	Node<ItemType>* left = nullptr;
+	Node<ItemType>* right = nullptr;
+
+	splitList(start, left, right);
+
+	left = mergeSortHelper(left);
+	right = mergeSortHelper(right);
+
+	Node<ItemType>* mergedList = mergeLists(left, right);
+
+	return mergedList;
 }
 
 //Extra Credit -- TO DO: implement quick sort and change its prototype 
 //                       if you need to.
 template<class ItemType>
-void LinkedBag<ItemType>::quickSort(){
+void LinkedBag<ItemType>::quickSort() {
+	if(headPtr == nullptr || headPtr->getNext() == nullptr)
+		return;
+
+	Node<ItemType>* tail = getTail(headPtr);
+	headPtr = quickSortRec(headPtr, tail);
+}
+
+template<class ItemType>
+Node<ItemType>* LinkedBag<ItemType>::getTail(Node<ItemType>* head) {
+	while (head != nullptr && head->getNext() != nullptr) {
+		head = head->getNext();
+	}
+	return head;
+}
+
+// partitions the LinkedBag around the pivot node
+template<class ItemType>
+Node<ItemType>* LinkedBag<ItemType>::partition(
+	Node<ItemType>* head,
+	Node<ItemType>* end,
+	Node<ItemType>** newHead, 
+	Node<ItemType>** newEnd)
+{
+	Node<ItemType>* pivot = end;
+	Node<ItemType>* prev = nullptr;
+	Node<ItemType>* curr = head;
+	Node<ItemType>* tail = pivot;
+
+	*newHead = nullptr;
+
+	// current node stays at the front as long as it's less than the pivot
+	while (curr != pivot) {
+		if (curr->getItem() < pivot->getItem()) {
+			if (*newHead == nullptr)
+				*newHead = curr;
+
+			prev = curr;
+			curr = curr->getNext();
+		}
+		// nodes that are less than or equal to the pivot are moved to the tail
+		else {
+			if (prev != nullptr)
+				prev->setNext(curr->getNext());
+
+			Node<ItemType>* temp = curr->getNext();
+			curr->setNext(nullptr);
+
+			tail->setNext(curr);
+			tail = curr;
+
+			curr = temp;
+		}
+	}
 	
+	// case where every node is greater than or equal to the pivot, the pivot becomes the head 
+	if (*newHead == nullptr)
+		*newHead = pivot;
+
+	*newEnd = tail;
+
+	return pivot;
+}
+
+template<class ItemType>
+Node<ItemType>* LinkedBag<ItemType>::quickSortRec(
+	Node<ItemType>* head,
+	Node<ItemType>* end) {
+	
+	if (!head || head == end)
+		return head;
+
+	Node<ItemType>* newHead = nullptr,
+		*newEnd = nullptr;
+
+	Node<ItemType>* pivot = partition(head, end, &newHead, &newEnd); // get pivot after partitioning list
+
+	if (newHead != pivot) {
+		Node<ItemType>* temp = newHead;
+		while (temp->getNext() != pivot)
+			temp = temp->getNext();
+		
+		temp->setNext(nullptr);
+
+		// finds node before the pivot and sorts left half
+		newHead = quickSortRec(newHead, temp);
+
+		temp = getTail(newHead);
+		temp->setNext(pivot);
+	}
+
+	// pivot attached after left-side sort, then right side sort
+	pivot->setNext(quickSortRec(pivot->getNext(), newEnd));
+
+	return newHead;
 }
 // --------------------------------------------------------------
 

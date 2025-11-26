@@ -19,6 +19,22 @@ class LinkedBag : public BagInterface<ItemType>{
 		// Returns either a pointer to the node containing a given entry
 		// or the null pointer if the entry is not in the bag.
 		Node<ItemType>* getPointerTo(const ItemType& target) const;
+
+		// MERGE SORT Helper Functions
+		Node<ItemType>* mergeSortHelper(Node <ItemType>* head);
+		Node<ItemType>* mergeLists(Node<ItemType>* left, Node<ItemType>* right);
+		void splitList(Node<ItemType>* start, Node<ItemType>*& left, Node<ItemType>*& right);
+
+		// QUICK SORT Helper Functions
+		Node<ItemType>* quickSortRec(Node<ItemType>* head, Node<ItemType>* end);
+		Node<ItemType>* partition(
+			Node<ItemType>* head,
+			Node<ItemType>* end,
+			Node<ItemType>** newHead,
+			Node<ItemType>** newEnd);
+		Node<ItemType>* getTail(Node<ItemType>* head);
+			
+
 		
 	public:
 		LinkedBag();
