@@ -1,5 +1,6 @@
 #include "Graph.h"
 
+
 // Constructor
 template <typename T>
 Graph<T>::Graph(int vertices, bool directed)
@@ -10,10 +11,17 @@ Graph<T>::Graph(int vertices, bool directed)
 // Add an edge
 template <typename T>
 void Graph<T>::addEdge(int u, int v, T weight) {
-    adjList[u].push_back({v, weight});
-    if (!directed) {
-        adjList[v].push_back({u, weight});
+    // Check bounds
+    if (u < 0 || u >= V || v < 0 || v >= V) {
+        return;
     }
+    // Disallow self-edges
+    if (u == v) {
+        return;
+    }
+    adjList[u].add({v, weight});
+    if (!directed) {
+        adjList[u].add({v, weight});    }
 }
 
 // Get number of nodes
@@ -27,7 +35,10 @@ template <typename T>
 void Graph<T>::printGraph() const {
     for (int i = 0; i < V; ++i) {
         cout << "Vertex " << i << ": ";
-        for (const auto& neighbor : adjList[i]) {
+
+        auto neighbors = adjList[i].toVector();
+
+        for (const auto& neighbor : neighbors) {
             cout << "(" << neighbor.first << ", " << neighbor.second << ") ";
         }
         cout << endl;
@@ -36,9 +47,10 @@ void Graph<T>::printGraph() const {
 
 // Get neighbors of a vertex
 template <typename T>
-const list<pair<int, T>>& Graph<T>::getNeighbors(int vertex) const {
+const LinkedBag<pair<int, T>>& Graph<T>::getNeighbors(int vertex) const {
     return adjList[vertex];
 }
+
 
 
 // DFS Traversal (Recursive approach)
@@ -56,11 +68,12 @@ void Graph<T>::DFTRecursive(int v, vector<bool>& visited) const {
     cout << v << " "; // Visit the current vertex
 
     // Recur for all the vertices adjacent to this vertex
-    for (const auto& neighbor : adjList[v]) {
-        if (!visited[neighbor.first]) {
-            DFTRecursive(neighbor.first, visited);
-        }
+    auto neighbors = adjList[v].toVector();
+    for (const auto& edge : neighbors) {
+        int to = edge.first;
+        if (!visited[to]) DFTRecursive(to, visited);
     }
+
 }
 
 // -----------------------------------------------------

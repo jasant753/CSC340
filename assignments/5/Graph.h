@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <utility>  // For std::pair
+#include "LinkedBagDS/LinkedBag.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ public:
     void printGraph() const;
 
     // Get neighbors of a vertex
-    const list<pair<int, T>>& getNeighbors(int vertex) const;
+    const LinkedBag<std::pair<int, T>>& getNeighbors(int vertex) const;
 
     // Depth First Traversal
     void DFT(int start) const;
@@ -40,7 +41,7 @@ public:
 private:
     int V; // Number of vertices
     bool directed; // Whether the graph is directed or undirected
-    vector<list<pair<int, T>>> adjList; // Adjacency list
+    vector<LinkedBag<pair<int, T>>> adjList; // LinkedBag Implementation
 };
 
 // Include the implementation of template functions
