@@ -12,7 +12,7 @@ long long seriesRecursive(int n) {
     } else if (n == 1 || n == 2) {
         return 1;
     } else {
-        return seriesRecursive(n - 1) + seriesRecursive(n - 2) + 4 * seriesRecursive(n-3);
+        return seriesRecursive(n - 1) + 2 * seriesRecursive(n - 2) + 4 * seriesRecursive(n-3);
     }
 }
 
