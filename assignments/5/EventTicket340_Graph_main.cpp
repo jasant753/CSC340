@@ -12,48 +12,123 @@ int main() {
 	// Add 10 distinct events to the vector
 	// TO DO 
 
+
+	// Create list of University campus events
 	vector<Event> events;
 	events.reserve(10);
 
-	events.emplace_back("event1",  "desc1",  5.0, 67);
-	events.emplace_back("event2",  "desc2",  5.0, 67);
-	events.emplace_back("event3",  "desc3",  5.0, 67);
-	events.emplace_back("event4",  "desc4",  5.0, 67);
-	events.emplace_back("event5",  "desc5",  5.0, 67);
-	events.emplace_back("event6",  "desc6",  5.0, 67);
-	events.emplace_back("event7",  "desc7",  5.0, 67);
-	events.emplace_back("event8",  "desc8",  5.0, 67);
-	events.emplace_back("event9",  "desc9",  5.0, 67);
-	events.emplace_back("event10", "desc10", 5.0, 67);
+	events.emplace_back(
+		"New Student Orientation",
+		"Welcome sessions for incoming students",
+		4.6,   // Average student rating based on past year's events
+		1200   // Tickets available
+	);
 
-	// Initialize a graph with n vertices (where n is the number of events) 
-	//	 Indicate whether it is directed or undirected 
-	// TO DO 
+	events.emplace_back(
+		"Fall Career Fair",
+		"Employers recruiting interns and graduates",
+		4.3,
+		950
+	);
+
+	events.emplace_back(
+		"Homecoming Game",
+		"Annual homecoming football game",
+		4.7,
+		1800
+	);
+
+	events.emplace_back(
+		"Research Symposium",
+		"Student and faculty research presentations",
+		4.1,
+		420
+	);
+
+	events.emplace_back(
+		"Guest Speaker Lecture",
+		"Industry leader guest lecture",
+		4.4,
+		600
+	);
+
+	events.emplace_back(
+		"Cultural Festival",
+		"Celebration of cultural diversity on campus",
+		4.8,
+		1100
+	);
+
+	events.emplace_back(
+		"Hackathon",
+		"24-hour coding and innovation competition",
+		5.0,
+		300
+	);
+
+	events.emplace_back(
+		"Spring Concert",
+		"Live concert featuring popular artists",
+		4.9,
+		2000
+	);
+
+	events.emplace_back(
+		"Graduate School Info Session",
+		"Information session for prospective grad students",
+		4.0,
+		350
+	);
+
+	events.emplace_back(
+		"Commencement Ceremony",
+		"University graduation ceremony",
+		4.7,
+		2500
+	);
+
+
+	// Directed graph was chosen to represent a flow between campus events.
+	// Based on student timelines, shared interests, and academic progression data from past students
+	// Event weight represents how strongly attending one event leads to attending the next based on student survey
 
 	int n = static_cast<int>(events.size());
 	bool directed = false;
 
 	Graph<int> eventGraph(n, directed);
 
-
 	// Add 15-20 edges (eventA, eventB, weight)
 	// TO DO
 
-	eventGraph.addEdge(0, 1, 3);
-	eventGraph.addEdge(0, 4, 7);
-	eventGraph.addEdge(1, 2, 2);
-	eventGraph.addEdge(1, 5, 6);
-	eventGraph.addEdge(2, 3, 4);
-	eventGraph.addEdge(2, 6, 1);
-	eventGraph.addEdge(3, 7, 5);
-	eventGraph.addEdge(4, 5, 2);
-	eventGraph.addEdge(4, 8, 9);
-	eventGraph.addEdge(5, 6, 3);
-	eventGraph.addEdge(6, 9, 4);
-	eventGraph.addEdge(7, 8, 6);
-	eventGraph.addEdge(8, 9, 2);
-	eventGraph.addEdge(9, 0, 8);
-	eventGraph.addEdge(3, 1, 7);
+	// Orientation
+	eventGraph.addEdge(0, 5, 8);  // Orientation -> Cultural Festival (campus community)
+	eventGraph.addEdge(0, 4, 7);  // Orientation -> Guest Speaker (academic engagement)
+	eventGraph.addEdge(0, 1, 6);  // Orientation -> Career Fair (early career planning)
+	eventGraph.addEdge(0, 6, 5);  // Orientation -> Hackathon (clubs/activities)
+
+	// Fall momentum
+	eventGraph.addEdge(5, 2, 7);  // Cultural Festival -> Homecoming (school spirit)
+	eventGraph.addEdge(4, 3, 6);  // Guest Speaker -> Research Symposium (academic pathway)
+	eventGraph.addEdge(6, 3, 8);  // Hackathon -> Research Symposium (projects -> research posters)
+	eventGraph.addEdge(1, 4, 5);  // Career Fair -> Guest Speaker (industry talk)
+
+	// Community Events
+	eventGraph.addEdge(2, 5, 6);  // Homecoming -> Cultural Festival
+	eventGraph.addEdge(2, 7, 7);  // Homecoming -> Spring Concert (students who go to big events)
+
+	// Academia and career
+	eventGraph.addEdge(3, 8, 9);  // Research Symposium -> Grad Info Session
+	eventGraph.addEdge(4, 8, 6);  // Guest Speaker -> Grad Info Session
+	eventGraph.addEdge(6, 1, 6);  // Hackathon -> Career Fair (recruiting pipeline)
+
+	// Spring vibes
+	eventGraph.addEdge(8, 9, 10); // Grad Info Session -> Commencement (end goal)
+	eventGraph.addEdge(7, 9, 7);  // Spring Concert -> Commencement (end-of-year flow)
+
+	// Misc.
+	eventGraph.addEdge(5, 6, 6);  // Cultural Festival -> Hackathon (student org involvement)
+	eventGraph.addEdge(1, 3, 5);  // Career Fair -> Research Symposium (professional development)
+	eventGraph.addEdge(3, 9, 8);  // Research Symposium -> Commencement (capstone/end-of-program)
 
 
 	// Print the adjacency list
