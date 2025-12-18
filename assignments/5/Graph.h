@@ -6,6 +6,9 @@
 #include <list>
 #include <utility>  // For std::pair
 #include "LinkedBagDS/LinkedBag.h"
+#include <string>
+#include <vector>
+#include "Event.h"
 
 using namespace std;
 
@@ -29,14 +32,26 @@ public:
     const LinkedBag<std::pair<int, T>>& getNeighbors(int vertex) const;
 
     // Depth First Traversal
-    void DFT(int start) const;
-    void DFTRecursive(int v, vector<bool>& visited) const;
+    // Updated to look up event info
+    void DFT(int start, const std::vector<Event>& events) const;
+    void DFTRecursive(int v, std::vector<bool>& visited, const std::vector<Event>& events) const;
 
     // -----------------------------------------------------
     // Depth First Search (by username)
     // TO DO 
     // Add DFS prototype 
     // Add DFSRecursive prototype
+
+    // Depth First Search
+    bool DFS(const std::string& targetName,
+             int start,
+             const std::vector<Event>& events) const;
+
+    bool DFSRecursive(int v,
+                      const std::string& targetName,
+                      const std::vector<Event>& events,
+                      std::vector<bool>& visited) const;
+
 
 private:
     int V; // Number of vertices

@@ -43,6 +43,7 @@ void Graph<T>::printGraph() const {
         }
         cout << endl;
     }
+    cout << endl;
 }
 
 // Get neighbors of a vertex
@@ -52,26 +53,29 @@ const LinkedBag<pair<int, T>>& Graph<T>::getNeighbors(int vertex) const {
 }
 
 
-
 // DFS Traversal (Recursive approach)
 template <typename T>
-void Graph<T>::DFT(int start) const {
-    vector<bool> visited(V, false); // To keep track of visited vertices
-    DFTRecursive(start, visited);
-    cout << endl;
+void Graph<T>::DFT(int start, const std::vector<Event>& events) const {
+    std::vector<bool> visited(V, false);
+
+    if (start < 0 || start >= V) return;
+    if (static_cast<int>(events.size()) != V) return;
+
+    DFTRecursive(start, visited, events);
+    std::cout << std::endl;
 }
 
 // Utility function for DFS (Recursive)
 template <typename T>
-void Graph<T>::DFTRecursive(int v, vector<bool>& visited) const {
+void Graph<T>::DFTRecursive(int v, std::vector<bool>& visited, const std::vector<Event>& events) const {
     visited[v] = true;
-    cout << v << " "; // Visit the current vertex
+    cout << events[v] << "\n"; // Print full event information
 
     // Recur for all the vertices adjacent to this vertex
     auto neighbors = adjList[v].toVector();
     for (const auto& edge : neighbors) {
         int to = edge.first;
-        if (!visited[to]) DFTRecursive(to, visited);
+        if (!visited[to]) DFTRecursive(to, visited, events);
     }
 
 }
@@ -81,3 +85,39 @@ void Graph<T>::DFTRecursive(int v, vector<bool>& visited) const {
 // TO DO 
 // Add DFS implementation 
 // Add DFSRecursive implementation 
+template <typename T>
+bool Graph<T>::DFS(const std::string& targetName,
+                   int start,
+                   const std::vector<Event>& events) const
+{
+    if (start < 0 || start >= V) return false;
+    if (static_cast<int>(events.size()) != V) return false;
+
+    std::vector<bool> visited(V, false);
+
+    return DFSRecursive(start, targetName, events, visited);
+}
+
+template <typename T>
+bool Graph<T>::DFSRecursive(int v,
+                            const std::string& targetName,
+                            const std::vector<Event>& events,
+                            std::vector<bool>& visited) const
+{
+    visited[v] = true;
+
+    if (events[v].getName() == targetName) {
+        return true;
+    }
+
+    auto neighbors = adjList[v].toVector();
+    for (const auto& edge : neighbors) {
+        int to = edge.first;
+        if (!visited[to]) {
+            if (DFSRecursive(to, targetName, events, visited)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

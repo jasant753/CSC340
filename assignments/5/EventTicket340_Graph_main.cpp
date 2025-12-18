@@ -8,15 +8,10 @@
 
 using namespace std;
 int main() {
-	// Create a list of Events
-	// Add 10 distinct events to the vector
-	// TO DO 
-
-
-	// Create list of University campus events
 	vector<Event> events;
 	events.reserve(10);
 
+	// Create list of University campus events
 	events.emplace_back(
 		"New Student Orientation",
 		"Welcome sessions for incoming students",
@@ -87,75 +82,62 @@ int main() {
 		2500
 	);
 
-
-	// Directed graph was chosen to represent a flow between campus events.
-	// Based on student timelines, shared interests, and academic progression data from past students
-	// Event weight represents how strongly attending one event leads to attending the next based on student survey
-
+	// We chose undirected here because two event tickets being purchased together is inherently symmetric
+	// i.e. You don't have to buy a ticket to Orientation in order to buy a ticket to the Career Fair
 	int n = static_cast<int>(events.size());
 	bool directed = false;
 
 	Graph<int> eventGraph(n, directed);
 
-	// Add 15-20 edges (eventA, eventB, weight)
-	// TO DO
+	// Add edges (eventA, eventB, weight)
+	// Edges created if two events have been purchased together at least once
+	// Weight represents number of times both event tickets were purchesed by a unique student
 
-	// Orientation
-	eventGraph.addEdge(0, 5, 8);  // Orientation -> Cultural Festival (campus community)
-	eventGraph.addEdge(0, 4, 7);  // Orientation -> Guest Speaker (academic engagement)
-	eventGraph.addEdge(0, 1, 6);  // Orientation -> Career Fair (early career planning)
-	eventGraph.addEdge(0, 6, 5);  // Orientation -> Hackathon (clubs/activities)
-
-	// Fall momentum
-	eventGraph.addEdge(5, 2, 7);  // Cultural Festival -> Homecoming (school spirit)
-	eventGraph.addEdge(4, 3, 6);  // Guest Speaker -> Research Symposium (academic pathway)
-	eventGraph.addEdge(6, 3, 8);  // Hackathon -> Research Symposium (projects -> research posters)
-	eventGraph.addEdge(1, 4, 5);  // Career Fair -> Guest Speaker (industry talk)
-
-	// Community Events
-	eventGraph.addEdge(2, 5, 6);  // Homecoming -> Cultural Festival
-	eventGraph.addEdge(2, 7, 7);  // Homecoming -> Spring Concert (students who go to big events)
-
-	// Academia and career
-	eventGraph.addEdge(3, 8, 9);  // Research Symposium -> Grad Info Session
-	eventGraph.addEdge(4, 8, 6);  // Guest Speaker -> Grad Info Session
-	eventGraph.addEdge(6, 1, 6);  // Hackathon -> Career Fair (recruiting pipeline)
-
-	// Spring vibes
-	eventGraph.addEdge(8, 9, 10); // Grad Info Session -> Commencement (end goal)
-	eventGraph.addEdge(7, 9, 7);  // Spring Concert -> Commencement (end-of-year flow)
-
-	// Misc.
-	eventGraph.addEdge(5, 6, 6);  // Cultural Festival -> Hackathon (student org involvement)
-	eventGraph.addEdge(1, 3, 5);  // Career Fair -> Research Symposium (professional development)
-	eventGraph.addEdge(3, 9, 8);  // Research Symposium -> Commencement (capstone/end-of-program)
-
+	eventGraph.addEdge(0, 1, 3);  // Orientation + Career Fair
+	eventGraph.addEdge(0, 5, 5);  // Orientation + Cultural Festival
+	eventGraph.addEdge(0, 4, 2);  // Orientation + Guest Speaker
+	eventGraph.addEdge(1, 4, 4);  // Career Fair + Guest Speaker
+	eventGraph.addEdge(1, 6, 6);  // Career Fair + Hackathon
+	eventGraph.addEdge(1, 3, 2);  // Career Fair + Research Symposium
+	eventGraph.addEdge(2, 5, 3);  // Homecoming + Cultural Festival
+	eventGraph.addEdge(2, 7, 7);  // Homecoming + Spring Concert
+	eventGraph.addEdge(3, 4, 3);  // Research + Guest Speaker
+	eventGraph.addEdge(3, 6, 4);  // Research + Hackathon
+	eventGraph.addEdge(3, 8, 5);  // Research + Grad Info
+	eventGraph.addEdge(4, 5, 2);  // Guest Speaker + Cultural Festival
+	eventGraph.addEdge(4, 8, 4);  // Guest Speaker + Grad Info
+	eventGraph.addEdge(5, 7, 6);  // Cultural Festival + Spring Concert
+	eventGraph.addEdge(5, 6, 2);  // Cultural Festival + Hackathon
+	eventGraph.addEdge(6, 7, 3);  // Hackathon + Spring Concert
+	eventGraph.addEdge(7, 9, 5);  // Spring Concert + Commencement
+	eventGraph.addEdge(8, 9, 8);  // Grad Info + Commencement
 
 	// Print the adjacency list
 	eventGraph.printGraph();
 
 	// Depth First traversal should print event information not just indices
-	//int start = 0;
-	// Call DFT 
-	// eventGraph.DFT(0, ...);
+	int start = 0;
 
+	// Call DFT
+	eventGraph.DFT(start, events);
 
 	bool found = false;
 	// Depth First search
-	string eventName1 = "event6"; //replace with an event name that exists
-	// Call DFS 
-	// TO DO:  
-	// found = eventGraph.DFS(eventName1, ...);
+	string eventName1 = "Hackathon"; //replace with an event name that exists
+
+	// Call DFS
+	found = eventGraph.DFS(eventName1, start, events);
+
 	if(found){
 		cout << eventName1 << " has been found in the graph!" << endl;
 	}else{
 		cout << eventName1 << " has not been found in the graph!" << endl;
 	}
 
-	string eventName2 = "event11"; //replace with an event name that DOES NOT exist
-	// Call DFS 
-	// TO DO:
-	// found = eventGraph.DFS(eventName2, ...);
+	string eventName2 = "Gloving meetup"; //replace with an event name that DOES NOT exist
+	// Call DFS
+	found = eventGraph.DFS(eventName2, start, events);
+
 	if(found){
 		cout << eventName2 << " has been found in the graph!" << endl;
 	}else{
