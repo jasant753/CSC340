@@ -36,12 +36,6 @@ public:
     void DFT(int start, const std::vector<Event>& events) const;
     void DFTRecursive(int v, std::vector<bool>& visited, const std::vector<Event>& events) const;
 
-    // -----------------------------------------------------
-    // Depth First Search (by username)
-    // TO DO 
-    // Add DFS prototype 
-    // Add DFSRecursive prototype
-
     // Depth First Search
     bool DFS(const std::string& targetName,
              int start,
@@ -51,7 +45,6 @@ public:
                       const std::string& targetName,
                       const std::vector<Event>& events,
                       std::vector<bool>& visited) const;
-
 
 private:
     int V; // Number of vertices

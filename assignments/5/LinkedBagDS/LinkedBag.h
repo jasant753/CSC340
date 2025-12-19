@@ -39,8 +39,6 @@ public:
 	int getFrequencyOf(const ItemType& anEntry) const;
 	std::vector<ItemType> toVector() const;
 
-
-
 }; // end LinkedBag
 
 #include "LinkedBag.cpp"

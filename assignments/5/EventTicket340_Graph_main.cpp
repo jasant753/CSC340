@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 #include "Graph.h"
 #include "LinkedBagDS/LinkedBag.h"
 #include "Event.h"
@@ -16,28 +15,28 @@ int main() {
 		"New Student Orientation",
 		"Welcome sessions for incoming students",
 		4.6,   // Average student rating based on past year's events
-		1200   // Tickets available
+		500   // Tickets sold
 	);
 
 	events.emplace_back(
 		"Fall Career Fair",
 		"Employers recruiting interns and graduates",
 		4.3,
-		950
+		200
 	);
 
 	events.emplace_back(
 		"Homecoming Game",
 		"Annual homecoming football game",
 		4.7,
-		1800
+		600
 	);
 
 	events.emplace_back(
 		"Research Symposium",
 		"Student and faculty research presentations",
 		4.1,
-		420
+		60
 	);
 
 	events.emplace_back(
@@ -51,35 +50,35 @@ int main() {
 		"Cultural Festival",
 		"Celebration of cultural diversity on campus",
 		4.8,
-		1100
+		350
 	);
 
 	events.emplace_back(
 		"Hackathon",
 		"24-hour coding and innovation competition",
 		5.0,
-		300
+		100
 	);
 
 	events.emplace_back(
 		"Spring Concert",
 		"Live concert featuring popular artists",
 		4.9,
-		2000
+		500
 	);
 
 	events.emplace_back(
 		"Graduate School Info Session",
 		"Information session for prospective grad students",
 		4.0,
-		350
+		230
 	);
 
 	events.emplace_back(
 		"Commencement Ceremony",
 		"University graduation ceremony",
 		4.7,
-		2500
+		150
 	);
 
 	// We chose undirected here because two event tickets being purchased together is inherently symmetric
@@ -123,8 +122,7 @@ int main() {
 
 	bool found = false;
 	// Depth First search
-	string eventName1 = "Hackathon"; //replace with an event name that exists
-
+	string eventName1 = "Hackathon"; // Exists
 	// Call DFS
 	found = eventGraph.DFS(eventName1, start, events);
 
@@ -134,7 +132,7 @@ int main() {
 		cout << eventName1 << " has not been found in the graph!" << endl;
 	}
 
-	string eventName2 = "Gloving meetup"; //replace with an event name that DOES NOT exist
+	string eventName2 = "Gloving meetup"; // DOES NOT exist
 	// Call DFS
 	found = eventGraph.DFS(eventName2, start, events);
 
@@ -143,6 +141,5 @@ int main() {
 	}else{
 		cout << eventName2 << " has not been found in the graph!" << endl;
 	}
-
 	return 0;
 }

@@ -1,6 +1,5 @@
 #include "Graph.h"
 
-
 // Constructor
 template <typename T>
 Graph<T>::Graph(int vertices, bool directed)
@@ -52,7 +51,6 @@ const LinkedBag<pair<int, T>>& Graph<T>::getNeighbors(int vertex) const {
     return adjList[vertex];
 }
 
-
 // DFS Traversal (Recursive approach)
 template <typename T>
 void Graph<T>::DFT(int start, const std::vector<Event>& events) const {
@@ -80,11 +78,7 @@ void Graph<T>::DFTRecursive(int v, std::vector<bool>& visited, const std::vector
 
 }
 
-// -----------------------------------------------------
-// Depth First Search (by username)
-// TO DO 
-// Add DFS implementation 
-// Add DFSRecursive implementation 
+// DFS Implementation
 template <typename T>
 bool Graph<T>::DFS(const std::string& targetName,
                    int start,
